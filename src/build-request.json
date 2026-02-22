@@ -1,0 +1,117 @@
+{
+  "kind": "build_request",
+  "title": "Create Snake Game",
+  "projectName": "Snake Game",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a playable Snake game with a snake that moves continuously in the current direction and grows longer when eating food",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Snake moves continuously in one direction (up, down, left, right)",
+        "Snake grows longer when it eats food",
+        "Food spawns at random positions on the game board",
+        "Game runs smoothly with consistent frame rate"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement arrow key controls to change the snake's direction",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Arrow keys (up, down, left, right) control snake direction",
+        "Snake cannot reverse direction (e.g., cannot go left if moving right)",
+        "Direction changes are responsive and immediate"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement collision detection for game over conditions when snake hits walls or itself",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Game ends when snake hits the boundary walls",
+        "Game ends when snake collides with its own body",
+        "Game over state is clearly displayed to the player"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Display current score that increments each time the snake eats food",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Score counter is visible during gameplay",
+        "Score increases by 1 for each food item eaten",
+        "Final score is shown on game over screen"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add restart functionality to start a new game after game over",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Restart button or key is available after game over",
+        "Restarting resets the snake to initial position and length",
+        "Score resets to 0 on restart"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create a visually engaging game interface with a distinct creative theme including colors, typography, and layout that creates a cohesive gaming experience",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Game has a consistent visual theme with appropriate colors",
+        "Typography is clear and readable for score and game states",
+        "Layout effectively presents the game board and UI elements",
+        "Overall design creates an engaging gaming atmosphere"
+      ]
+    }
+  ],
+  "constraints": [
+    "Game must be implemented using React with TypeScript",
+    "Game logic must run entirely in the frontend",
+    "Use Tailwind CSS for styling"
+  ],
+  "nonGoals": [
+    "Multiplayer functionality",
+    "Backend score persistence or leaderboards",
+    "Mobile touch controls",
+    "Sound effects or background music",
+    "Different difficulty levels",
+    "Power-ups or special items beyond basic food"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

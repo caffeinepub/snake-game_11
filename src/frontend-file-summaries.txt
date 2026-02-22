@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application entry point that renders the GameLayout component.",
+  "frontend/src/types/game.ts": "TypeScript type definitions for game entities including Position, Direction, Snake, Food, and GameState.",
+  "frontend/src/utils/collisionDetection.ts": "Utility functions for detecting wall collisions, self-collisions, and food collisions in the game.",
+  "frontend/src/hooks/useKeyboardControls.ts": "Custom hook that handles keyboard input for arrow keys, pause (spacebar), and restart (Enter/spacebar), with direction validation to prevent 180-degree turns.",
+  "frontend/src/hooks/useGameLoop.ts": "Custom hook that manages the game loop using requestAnimationFrame with fixed time-step updates for consistent game speed, now with proper null initialization for React 19 compatibility.",
+  "frontend/src/components/SnakeGame.tsx": "Main game component that manages game state, renders the canvas with neon-styled graphics, handles snake movement, collision detection, food spawning, and score tracking.",
+  "frontend/src/components/ScoreDisplay.tsx": "Component that displays the current score and pause status with a cyberpunk-themed design.",
+  "frontend/src/components/GameOverScreen.tsx": "Overlay component shown when the game ends, displaying final score and restart button with neon styling.",
+  "frontend/src/components/GameLayout.tsx": "Main layout wrapper that includes header, game area, instructions, tips, and footer with proper attribution.",
+  "frontend/src/index.css": "Global styles with OKLCH color system including custom cyberpunk/neon theme colors for the game (deep blue backgrounds, vibrant green/purple accents).",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom game-specific color tokens for the neon cyberpunk theme.",
+  "frontend/src/hooks/useQueries.ts": "Empty file as the Snake game runs entirely in the frontend without backend queries."
+}

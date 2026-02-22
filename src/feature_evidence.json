@@ -1,0 +1,126 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-playable-snake-game-with-a-snake-that-moves-continuously-in-the-current-direction-and-grows-longer-when-eating-food",
+      "featureTitle": "Create a playable Snake game with a snake that moves continuously in the current direction and grows longer when eating food",
+      "files": [
+        "frontend/src/components/SnakeGame.tsx",
+        "frontend/src/hooks/useGameLoop.ts",
+        "frontend/src/types/game.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-arrow-key-controls-to-change-the-snake-s-direction",
+      "featureTitle": "Implement arrow key controls to change the snake's direction",
+      "files": [
+        "frontend/src/components/SnakeGame.tsx",
+        "frontend/src/hooks/useKeyboardControls.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-collision-detection-for-game-over-conditions-when-snake-hits-walls-or-itself",
+      "featureTitle": "Implement collision detection for game over conditions when snake hits walls or itself",
+      "files": [
+        "frontend/src/components/GameOverScreen.tsx",
+        "frontend/src/components/SnakeGame.tsx",
+        "frontend/src/utils/collisionDetection.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-current-score-that-increments-each-time-the-snake-eats-food",
+      "featureTitle": "Display current score that increments each time the snake eats food",
+      "files": [
+        "frontend/src/components/GameOverScreen.tsx",
+        "frontend/src/components/ScoreDisplay.tsx",
+        "frontend/src/components/SnakeGame.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-restart-functionality-to-start-a-new-game-after-game-over",
+      "featureTitle": "Add restart functionality to start a new game after game over",
+      "files": [
+        "frontend/src/components/GameOverScreen.tsx",
+        "frontend/src/components/SnakeGame.tsx",
+        "frontend/src/hooks/useKeyboardControls.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-visually-engaging-game-interface-with-a-distinct-creative-theme-including-colors-typography-and-layout-that-creates-a-cohesive-gaming-experience",
+      "featureTitle": "Create a visually engaging game interface with a distinct creative theme including colors, typography, and layout that creates a cohesive gaming experience",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/GameLayout.tsx",
+        "frontend/src/components/SnakeGame.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

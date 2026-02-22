@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Building a Snake game",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-playable-snake-game-with-a-snake-that-moves-continuously-in-the-current-direction-and-grows-longer-when-eating-food",
+      "title": "Create a playable Snake game with a snake that moves continuously in the current direction and grows longer when eating food",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-arrow-key-controls-to-change-the-snake-s-direction",
+      "title": "Implement arrow key controls to change the snake's direction",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-collision-detection-for-game-over-conditions-when-snake-hits-walls-or-itself",
+      "title": "Implement collision detection for game over conditions when snake hits walls or itself",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-current-score-that-increments-each-time-the-snake-eats-food",
+      "title": "Display current score that increments each time the snake eats food",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-restart-functionality-to-start-a-new-game-after-game-over",
+      "title": "Add restart functionality to start a new game after game over",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-visually-engaging-game-interface-with-a-distinct-creative-theme-including-colors-typography-and-layout-that-creates-a-cohesive-gaming-experience",
+      "title": "Create a visually engaging game interface with a distinct creative theme including colors, typography, and layout that creates a cohesive gaming experience",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a Snake game",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "2d",
+  "projectName": "Snake Game",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
