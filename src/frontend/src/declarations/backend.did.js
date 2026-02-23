@@ -8,10 +8,104 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
-export const idlService = IDL.Service({});
+export const UserRole = IDL.Variant({
+  'admin' : IDL.Null,
+  'user' : IDL.Null,
+  'guest' : IDL.Null,
+});
+export const Time = IDL.Int;
+export const WakeUpSettings = IDL.Record({
+  'wakeUpTime' : Time,
+  'isEnabled' : IDL.Bool,
+});
+export const UserProfile = IDL.Record({
+  'name' : IDL.Text,
+  'email' : IDL.Opt(IDL.Text),
+});
+export const PhotoSubmission = IDL.Record({
+  'photoUrl' : IDL.Text,
+  'timestamp' : Time,
+});
+
+export const idlService = IDL.Service({
+  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'deleteUserData' : IDL.Func([IDL.Principal], [], []),
+  'getAllUserRecords' : IDL.Func(
+      [],
+      [IDL.Vec(IDL.Tuple(IDL.Principal, WakeUpSettings, IDL.Nat))],
+      ['query'],
+    ),
+  'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+  'getPhotoSubmissions' : IDL.Func([], [IDL.Vec(PhotoSubmission)], ['query']),
+  'getUserPhotoSubmissions' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Vec(PhotoSubmission)],
+      ['query'],
+    ),
+  'getUserProfile' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Opt(UserProfile)],
+      ['query'],
+    ),
+  'getWakeUpTime' : IDL.Func([], [IDL.Opt(WakeUpSettings)], ['query']),
+  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+  'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+  'setWakeUpTime' : IDL.Func([WakeUpSettings], [], []),
+  'submitPhoto' : IDL.Func([IDL.Text], [], []),
+});
 
 export const idlInitArgs = [];
 
-export const idlFactory = ({ IDL }) => { return IDL.Service({}); };
+export const idlFactory = ({ IDL }) => {
+  const UserRole = IDL.Variant({
+    'admin' : IDL.Null,
+    'user' : IDL.Null,
+    'guest' : IDL.Null,
+  });
+  const Time = IDL.Int;
+  const WakeUpSettings = IDL.Record({
+    'wakeUpTime' : Time,
+    'isEnabled' : IDL.Bool,
+  });
+  const UserProfile = IDL.Record({
+    'name' : IDL.Text,
+    'email' : IDL.Opt(IDL.Text),
+  });
+  const PhotoSubmission = IDL.Record({
+    'photoUrl' : IDL.Text,
+    'timestamp' : Time,
+  });
+  
+  return IDL.Service({
+    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'deleteUserData' : IDL.Func([IDL.Principal], [], []),
+    'getAllUserRecords' : IDL.Func(
+        [],
+        [IDL.Vec(IDL.Tuple(IDL.Principal, WakeUpSettings, IDL.Nat))],
+        ['query'],
+      ),
+    'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+    'getPhotoSubmissions' : IDL.Func([], [IDL.Vec(PhotoSubmission)], ['query']),
+    'getUserPhotoSubmissions' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Vec(PhotoSubmission)],
+        ['query'],
+      ),
+    'getUserProfile' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Opt(UserProfile)],
+        ['query'],
+      ),
+    'getWakeUpTime' : IDL.Func([], [IDL.Opt(WakeUpSettings)], ['query']),
+    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+    'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+    'setWakeUpTime' : IDL.Func([WakeUpSettings], [], []),
+    'submitPhoto' : IDL.Func([IDL.Text], [], []),
+  });
+};
 
 export const init = ({ IDL }) => { return []; };

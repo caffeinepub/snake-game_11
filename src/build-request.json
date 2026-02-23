@@ -1,117 +1,152 @@
 {
   "kind": "build_request",
-  "title": "Create Snake Game",
-  "projectName": "Snake Game",
+  "title": "Add wake-up accountability feature with photo upload for oversleeping",
+  "projectName": "Wake Up Warrior",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a playable Snake game with a snake that moves continuously in the current direction and grows longer when eating food",
+      "id": "REQ-7",
+      "text": "Create a wake-up time setting interface where users can set their target wake-up time",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-user-final"
+        ],
+        "quotes": [
+          "说好的几点起床"
         ]
       },
       "acceptanceCriteria": [
-        "Snake moves continuously in one direction (up, down, left, right)",
-        "Snake grows longer when it eats food",
-        "Food spawns at random positions on the game board",
-        "Game runs smoothly with consistent frame rate"
+        "Users can select hours and minutes for their target wake-up time",
+        "The selected time is displayed clearly in the interface",
+        "Users can modify their wake-up time at any time"
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Implement arrow key controls to change the snake's direction",
+      "id": "REQ-8",
+      "text": "Implement a timer that tracks the current time against the set wake-up time and calculates how many minutes late the user is",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-user-final"
+        ],
+        "quotes": [
+          "多出几分钟"
         ]
       },
       "acceptanceCriteria": [
-        "Arrow keys (up, down, left, right) control snake direction",
-        "Snake cannot reverse direction (e.g., cannot go left if moving right)",
-        "Direction changes are responsive and immediate"
+        "The app continuously checks the current time against the wake-up time",
+        "When current time exceeds wake-up time, calculate minutes late",
+        "Display the minutes late to the user clearly"
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Implement collision detection for game over conditions when snake hits walls or itself",
+      "id": "REQ-9",
+      "text": "Add photo capture functionality that allows users to take or upload a photo of themselves wearing clothes",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-user-final"
+        ],
+        "quotes": [
+          "上传自己穿上衣服的照片"
         ]
       },
       "acceptanceCriteria": [
-        "Game ends when snake hits the boundary walls",
-        "Game ends when snake collides with its own body",
-        "Game over state is clearly displayed to the player"
+        "Users can access device camera to take a photo",
+        "Users can alternatively upload an existing photo from their device",
+        "Photo preview is shown before final submission",
+        "Only one photo is required per wake-up session"
       ]
     },
     {
-      "id": "REQ-4",
-      "text": "Display current score that increments each time the snake eats food",
+      "id": "REQ-10",
+      "text": "Enforce photo upload requirement when user wakes up late, preventing them from dismissing or continuing until photo is submitted",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-user-final"
+        ],
+        "quotes": [
+          "多出几分钟就要上传自己穿上衣服的照片"
         ]
       },
       "acceptanceCriteria": [
-        "Score counter is visible during gameplay",
-        "Score increases by 1 for each food item eaten",
-        "Final score is shown on game over screen"
+        "If current time exceeds wake-up time by any amount, photo upload becomes mandatory",
+        "User cannot proceed or dismiss the requirement without uploading photo",
+        "Clear messaging explains why photo is required",
+        "After photo submission, user can proceed normally"
       ]
     },
     {
-      "id": "REQ-5",
-      "text": "Add restart functionality to start a new game after game over",
-      "target": "frontend",
+      "id": "REQ-11",
+      "text": "Store wake-up time settings and photo submission records in the backend to persist user accountability data",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-user-final"
         ]
       },
       "acceptanceCriteria": [
-        "Restart button or key is available after game over",
-        "Restarting resets the snake to initial position and length",
-        "Score resets to 0 on restart"
+        "Wake-up times are persisted across sessions",
+        "Photo submission records include timestamp and late minutes",
+        "Users can view their wake-up history",
+        "Data is associated with authenticated users"
       ]
     },
     {
-      "id": "REQ-6",
-      "text": "Create a visually engaging game interface with a distinct creative theme including colors, typography, and layout that creates a cohesive gaming experience",
+      "id": "REQ-12",
+      "text": "Display a history or log showing past wake-up times, whether user was on time or late, and minutes late for each occurrence",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-user-final"
         ]
       },
       "acceptanceCriteria": [
-        "Game has a consistent visual theme with appropriate colors",
-        "Typography is clear and readable for score and game states",
-        "Layout effectively presents the game board and UI elements",
-        "Overall design creates an engaging gaming atmosphere"
+        "Users can view a chronological list of wake-up records",
+        "Each record shows the target time, actual wake time, and minutes late",
+        "On-time wake-ups are clearly distinguished from late wake-ups",
+        "Photo submission status is indicated for late wake-ups"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Integrate Internet Identity authentication to enable multi-user support where each user has their own wake-up settings and photo records",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-user-final"
+        ],
+        "quotes": [
+          "大家避免赖床"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users must authenticate with Internet Identity to use the app",
+        "Each user's wake-up settings and history are isolated",
+        "Login state persists across sessions",
+        "Unauthenticated users are prompted to log in"
       ]
     }
   ],
   "constraints": [
-    "Game must be implemented using React with TypeScript",
-    "Game logic must run entirely in the frontend",
-    "Use Tailwind CSS for styling"
+    "Use existing Internet Identity integration from frontend/src/hooks/useInternetIdentity.ts",
+    "Store photos as static assets in frontend, not routed through backend",
+    "Do not modify immutable frontend paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx"
   ],
   "nonGoals": [
-    "Multiplayer functionality",
-    "Backend score persistence or leaderboards",
-    "Mobile touch controls",
-    "Sound effects or background music",
-    "Different difficulty levels",
-    "Power-ups or special items beyond basic food"
+    "Actual alarm or notification functionality to wake users",
+    "Social features like sharing photos with other users",
+    "Image analysis or verification that user is actually dressed",
+    "Integration with external calendar or alarm apps",
+    "SMS or push notifications"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Minimalist alarm clock icon illustration for the wake-up feature (alarm-icon.dim_128x128.png)",
+      "Hero banner image with motivational morning theme showing sunrise colors (wake-hero.dim_1200x400.png)"
+    ],
     "edits": []
   }
 }

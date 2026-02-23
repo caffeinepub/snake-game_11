@@ -1,5 +1,5 @@
 {
-  "frontend/src/App.tsx": "Main application entry point that renders the GameLayout component.",
+  "frontend/src/App.tsx": "Main application entry point that sets up QueryClient, ThemeProvider, and renders the Wake Up Warrior app with authentication guard and profile setup.",
   "frontend/src/types/game.ts": "TypeScript type definitions for game entities including Position, Direction, Snake, Food, and GameState.",
   "frontend/src/utils/collisionDetection.ts": "Utility functions for detecting wall collisions, self-collisions, and food collisions in the game.",
   "frontend/src/hooks/useKeyboardControls.ts": "Custom hook that handles keyboard input for arrow keys, pause (spacebar), and restart (Enter/spacebar), with direction validation to prevent 180-degree turns.",
@@ -8,7 +8,19 @@
   "frontend/src/components/ScoreDisplay.tsx": "Component that displays the current score and pause status with a cyberpunk-themed design.",
   "frontend/src/components/GameOverScreen.tsx": "Overlay component shown when the game ends, displaying final score and restart button with neon styling.",
   "frontend/src/components/GameLayout.tsx": "Main layout wrapper that includes header, game area, instructions, tips, and footer with proper attribution.",
-  "frontend/src/index.css": "Global styles with OKLCH color system including custom cyberpunk/neon theme colors for the game (deep blue backgrounds, vibrant green/purple accents).",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with custom game-specific color tokens for the neon cyberpunk theme.",
-  "frontend/src/hooks/useQueries.ts": "Empty file as the Snake game runs entirely in the frontend without backend queries."
+  "frontend/src/index.css": "Global styles with OKLCH color system customized for Wake Up Warrior theme with warm morning colors and proper dark mode support.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Wake Up Warrior color tokens for consistent theming throughout the application.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including user profile, wake-up settings, and photo submissions with proper cache invalidation.",
+  "frontend/src/components/WakeUpLayout.tsx": "Main layout component with header, hero section, wake-up features grid, history section, and footer with proper attribution.",
+  "frontend/src/components/LoginButton.tsx": "Login/logout button component using Internet Identity with proper error handling and query cache clearing on logout.",
+  "frontend/src/components/AuthGuard.tsx": "Authentication guard that requires users to log in before accessing the app, showing loading state and login prompt when needed.",
+  "frontend/src/components/ProfileSetup.tsx": "Modal component for first-time user profile setup that prompts for name and prevents modal flashing by checking actor readiness.",
+  "frontend/src/components/WakeUpSettings.tsx": "Settings component allowing users to configure their target wake-up time with hour/minute selectors and enable/disable toggle.",
+  "frontend/src/components/WakeUpTimer.tsx": "Timer component that displays current time, target time, and calculates minutes late with visual status indicators.",
+  "frontend/src/components/PhotoRequirementModal.tsx": "Non-dismissible modal that appears when user is late and requires photo submission before proceeding.",
+  "frontend/src/components/PhotoCapture.tsx": "Photo capture component with camera and file upload tabs, preview functionality, and submission handling.",
+  "frontend/src/components/WakeUpHistory.tsx": "History component displaying chronological list of wake-up records with status badges and submission indicators.",
+  "frontend/src/hooks/useUserProfile.ts": "Simple wrapper hook for getting the current user's profile using the authorization component pattern.",
+  "frontend/src/hooks/useWakeUpTimer.ts": "Custom hook that manages wake-up timer logic, comparing current time against target and calculating minutes late.",
+  "frontend/src/hooks/usePhotoUpload.ts": "Hook for handling photo file conversion to data URL and submission to backend with loading and success states."
 }

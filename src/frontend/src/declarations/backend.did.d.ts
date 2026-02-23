@@ -10,7 +10,32 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface _SERVICE {}
+export interface PhotoSubmission { 'photoUrl' : string, 'timestamp' : Time }
+export type Time = bigint;
+export interface UserProfile { 'name' : string, 'email' : [] | [string] }
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
+export interface WakeUpSettings { 'wakeUpTime' : Time, 'isEnabled' : boolean }
+export interface _SERVICE {
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'deleteUserData' : ActorMethod<[Principal], undefined>,
+  'getAllUserRecords' : ActorMethod<
+    [],
+    Array<[Principal, WakeUpSettings, bigint]>
+  >,
+  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
+  'getPhotoSubmissions' : ActorMethod<[], Array<PhotoSubmission>>,
+  'getUserPhotoSubmissions' : ActorMethod<[Principal], Array<PhotoSubmission>>,
+  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
+  'getWakeUpTime' : ActorMethod<[], [] | [WakeUpSettings]>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
+  'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
+  'setWakeUpTime' : ActorMethod<[WakeUpSettings], undefined>,
+  'submitPhoto' : ActorMethod<[string], undefined>,
+}
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];
 export declare const idlFactory: IDL.InterfaceFactory;

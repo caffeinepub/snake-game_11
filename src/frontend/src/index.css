@@ -4,94 +4,86 @@
 
 @layer base {
     :root {
-        --radius: 0.625rem;
-        --background: 1 0 0;
-        --foreground: 0.145 0 0;
+        --radius: 0.75rem;
+        --background: 0.98 0.01 60;
+        --foreground: 0.20 0.02 60;
         --card: 1 0 0;
-        --card-foreground: 0.145 0 0;
+        --card-foreground: 0.20 0.02 60;
         --popover: 1 0 0;
-        --popover-foreground: 0.145 0 0;
-        --primary: 0.205 0 0;
-        --primary-foreground: 0.985 0 0;
-        --secondary: 0.97 0 0;
-        --secondary-foreground: 0.205 0 0;
-        --muted: 0.97 0 0;
-        --muted-foreground: 0.556 0 0;
-        --accent: 0.97 0 0;
-        --accent-foreground: 0.205 0 0;
-        --destructive: 0.577 0.245 27.325;
-        --destructive-foreground: 0.985 0 0;
-        --border: 0.922 0 0;
-        --input: 0.922 0 0;
-        --ring: 0.708 0 0;
-        --chart-1: 0.646 0.222 41.116;
-        --chart-2: 0.6 0.118 184.704;
-        --chart-3: 0.398 0.07 227.392;
-        --chart-4: 0.828 0.189 84.429;
-        --chart-5: 0.769 0.188 70.08;
-        --sidebar: 0.985 0 0;
-        --sidebar-foreground: 0.145 0 0;
-        --sidebar-primary: 0.205 0 0;
-        --sidebar-primary-foreground: 0.985 0 0;
-        --sidebar-accent: 0.97 0 0;
-        --sidebar-accent-foreground: 0.205 0 0;
-        --sidebar-border: 0.922 0 0;
-        --sidebar-ring: 0.708 0 0;
+        --popover-foreground: 0.20 0.02 60;
+        --primary: 0.45 0.18 260;
+        --primary-foreground: 1 0 0;
+        --secondary: 0.95 0.01 60;
+        --secondary-foreground: 0.20 0.02 60;
+        --muted: 0.92 0.01 60;
+        --muted-foreground: 0.50 0.02 60;
+        --accent: 0.55 0.20 40;
+        --accent-foreground: 1 0 0;
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 1 0 0;
+        --border: 0.88 0.01 60;
+        --input: 0.88 0.01 60;
+        --ring: 0.45 0.18 260;
+        --chart-1: 0.60 0.20 200;
+        --chart-2: 0.65 0.18 160;
+        --chart-3: 0.55 0.22 40;
+        --chart-4: 0.70 0.15 280;
+        --chart-5: 0.50 0.20 320;
         
-        /* Game-specific colors - Cyberpunk/Neon theme */
-        --game-bg-start: 0.08 0.15 250;
-        --game-bg-end: 0.12 0.18 280;
-        --game-primary: 0.15 0.12 260;
-        --game-secondary: 0.55 0.20 280;
-        --game-accent: 0.65 0.22 160;
-        --game-border: 0.45 0.18 260;
-        --game-card: 0.12 0.10 265;
-        --game-text-secondary: 0.70 0.08 260;
+        /* Wake Up Warrior theme colors */
+        --wake-dawn: 0.95 0.03 40;
+        --wake-morning: 0.92 0.05 60;
+        --wake-sky: 0.88 0.08 220;
+        --wake-hero-start: 0.55 0.20 40;
+        --wake-hero-end: 0.60 0.18 200;
+        --wake-accent: 0.55 0.20 40;
+        --wake-accent-foreground: 1 0 0;
+        --wake-success: 0.60 0.18 150;
+        --wake-border: 0.88 0.01 60;
+        --wake-card: 1 0 0;
+        --wake-foreground: 0.20 0.02 60;
+        --wake-muted: 0.50 0.02 60;
     }
 
     .dark {
-        --background: 0.145 0 0;
-        --foreground: 0.985 0 0;
-        --card: 0.205 0 0;
-        --card-foreground: 0.985 0 0;
-        --popover: 0.269 0 0;
-        --popover-foreground: 0.985 0 0;
-        --primary: 0.922 0 0;
-        --primary-foreground: 0.205 0 0;
-        --secondary: 0.269 0 0;
-        --secondary-foreground: 0.985 0 0;
-        --muted: 0.269 0 0;
-        --muted-foreground: 0.708 0 0;
-        --accent: 0.371 0 0;
-        --accent-foreground: 0.985 0 0;
-        --destructive: 0.704 0.191 22.216;
-        --destructive-foreground: 0.205 0 0;
-        --border: 1 0 0 / 10%;
-        --input: 1 0 0 / 15%;
-        --ring: 0.556 0 0;
-        --chart-1: 0.488 0.243 264.376;
-        --chart-2: 0.696 0.17 162.48;
-        --chart-3: 0.769 0.188 70.08;
-        --chart-4: 0.627 0.265 303.9;
-        --chart-5: 0.645 0.246 16.439;
-        --sidebar: 0.205 0 0;
-        --sidebar-foreground: 0.985 0 0;
-        --sidebar-primary: 0.488 0.243 264.376;
-        --sidebar-primary-foreground: 0.985 0 0;
-        --sidebar-accent: 0.269 0 0;
-        --sidebar-accent-foreground: 0.985 0 0;
-        --sidebar-border: 1 0 0 / 10%;
-        --sidebar-ring: 0.439 0 0;
+        --background: 0.15 0.02 260;
+        --foreground: 0.95 0.01 60;
+        --card: 0.20 0.03 260;
+        --card-foreground: 0.95 0.01 60;
+        --popover: 0.18 0.03 260;
+        --popover-foreground: 0.95 0.01 60;
+        --primary: 0.65 0.20 240;
+        --primary-foreground: 0.15 0.02 260;
+        --secondary: 0.25 0.03 260;
+        --secondary-foreground: 0.95 0.01 60;
+        --muted: 0.25 0.03 260;
+        --muted-foreground: 0.65 0.02 60;
+        --accent: 0.55 0.20 40;
+        --accent-foreground: 0.15 0.02 260;
+        --destructive: 0.60 0.22 25;
+        --destructive-foreground: 0.95 0.01 60;
+        --border: 0.30 0.03 260;
+        --input: 0.30 0.03 260;
+        --ring: 0.65 0.20 240;
+        --chart-1: 0.60 0.20 200;
+        --chart-2: 0.65 0.18 160;
+        --chart-3: 0.55 0.22 40;
+        --chart-4: 0.70 0.15 280;
+        --chart-5: 0.50 0.20 320;
         
-        /* Game-specific colors - Enhanced for dark mode */
-        --game-bg-start: 0.08 0.15 250;
-        --game-bg-end: 0.12 0.18 280;
-        --game-primary: 0.15 0.12 260;
-        --game-secondary: 0.55 0.20 280;
-        --game-accent: 0.65 0.22 160;
-        --game-border: 0.45 0.18 260;
-        --game-card: 0.12 0.10 265;
-        --game-text-secondary: 0.70 0.08 260;
+        /* Wake Up Warrior dark theme */
+        --wake-dawn: 0.18 0.05 260;
+        --wake-morning: 0.20 0.06 240;
+        --wake-sky: 0.22 0.08 220;
+        --wake-hero-start: 0.45 0.18 40;
+        --wake-hero-end: 0.50 0.16 200;
+        --wake-accent: 0.55 0.20 40;
+        --wake-accent-foreground: 0.15 0.02 260;
+        --wake-success: 0.55 0.18 150;
+        --wake-border: 0.30 0.03 260;
+        --wake-card: 0.20 0.03 260;
+        --wake-foreground: 0.95 0.01 60;
+        --wake-muted: 0.65 0.02 60;
     }
 
     * {

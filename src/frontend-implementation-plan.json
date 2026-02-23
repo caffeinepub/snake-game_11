@@ -1,168 +1,150 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Create Snake Game",
+  "title": "Add wake-up accountability feature with photo upload for oversleeping",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Create a playable Snake game with continuous movement and growth mechanics",
+      "id": "REQ-7",
+      "summary": "Create a wake-up time setting interface where users can set their target wake-up time",
       "acceptanceCriteria": [
-        "Snake moves continuously in one direction (up, down, left, right)",
-        "Snake grows longer when it eats food",
-        "Food spawns at random positions on the game board",
-        "Game runs smoothly with consistent frame rate"
+        "Users can select hours and minutes for their target wake-up time",
+        "The selected time is displayed clearly in the interface",
+        "Users can modify their wake-up time at any time"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/SnakeGame.tsx",
+          "path": "frontend/src/components/WakeUpSettings.tsx",
           "operation": "create",
-          "description": "Create the main Snake game component implementing the 2D game canvas, game loop with requestAnimationFrame for smooth rendering, snake state management (position array, direction), food state and random spawning logic, and collision detection for food consumption that triggers snake growth"
+          "description": "Create a settings component allowing users to configure their target wake-up time using hour and minute selectors. Display the currently set wake-up time clearly. Use the authorization component to ensure only authenticated users can access this feature. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/hooks/useGameLoop.ts",
+          "path": "frontend/src/hooks/useWakeUpSettings.ts",
           "operation": "create",
-          "description": "Create a custom hook to manage the game loop using requestAnimationFrame, handling game state updates at consistent intervals, and providing controls to start, pause, and reset the game loop"
-        },
-        {
-          "path": "frontend/src/types/game.ts",
-          "operation": "create",
-          "description": "Define TypeScript types for game entities including Position, Direction, Snake, Food, and GameState to ensure type safety throughout the game logic"
+          "description": "Create a custom hook that wraps backend calls to getWakeUpTime and setWakeUpTime using React Query. Provide methods to fetch, update, and cache wake-up settings. Handle loading and error states appropriately."
         }
       ]
     },
     {
-      "id": "REQ-2",
-      "summary": "Implement arrow key controls for snake direction changes",
+      "id": "REQ-8",
+      "summary": "Implement a timer that tracks the current time against the set wake-up time and calculates how many minutes late the user is",
       "acceptanceCriteria": [
-        "Arrow keys (up, down, left, right) control snake direction",
-        "Snake cannot reverse direction (e.g., cannot go left if moving right)",
-        "Direction changes are responsive and immediate"
+        "The app continuously checks the current time against the wake-up time",
+        "When current time exceeds wake-up time, calculate minutes late",
+        "Display the minutes late to the user clearly"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useKeyboardControls.ts",
+          "path": "frontend/src/components/WakeUpTimer.tsx",
           "operation": "create",
-          "description": "Create a custom hook to handle keyboard event listeners for arrow key input, implement direction validation logic to prevent 180-degree turns, and return the current direction state"
+          "description": "Create a timer component that continuously compares the current time to the user's target wake-up time. Calculate and display how many minutes late the user is when the current time exceeds the wake-up time. Use setInterval or useEffect to update the timer every minute. Display the late minutes prominently when applicable."
         },
         {
-          "path": "frontend/src/components/SnakeGame.tsx",
-          "operation": "modify",
-          "description": "Integrate the useKeyboardControls hook to connect arrow key input to snake direction updates, ensuring direction changes are applied before the next game loop iteration"
+          "path": "frontend/src/hooks/useWakeUpTimer.ts",
+          "operation": "create",
+          "description": "Create a custom hook that manages the wake-up timer logic. Compare current time against the set wake-up time, calculate minutes late, and return relevant timer state (isLate, minutesLate, currentTime). Update the timer state every minute using useEffect with setInterval."
         }
       ]
     },
     {
-      "id": "REQ-3",
-      "summary": "Implement collision detection for game over conditions",
+      "id": "REQ-9",
+      "summary": "Add photo capture functionality that allows users to take or upload a photo of themselves wearing clothes",
       "acceptanceCriteria": [
-        "Game ends when snake hits the boundary walls",
-        "Game ends when snake collides with its own body",
-        "Game over state is clearly displayed to the player"
+        "Users can access device camera to take a photo",
+        "Users can alternatively upload an existing photo from their device",
+        "Photo preview is shown before final submission",
+        "Only one photo is required per wake-up session"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/utils/collisionDetection.ts",
+          "path": "frontend/src/components/PhotoCapture.tsx",
           "operation": "create",
-          "description": "Create utility functions to detect wall collisions (checking if snake head is outside game board boundaries) and self-collision (checking if snake head position matches any body segment position)"
+          "description": "Create a photo capture component that integrates the camera component to enable taking photos via device camera. Use the camera/useCamera.ts hook to provide camera preview, capture functionality, and camera controls. Also provide a file input option to allow users to upload existing photos. Show a preview of the captured or uploaded photo before submission. Reference the generated image frontend/public/assets/generated/alarm-icon.dim_128x128.png for UI decoration. Verify the camera component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/SnakeGame.tsx",
-          "operation": "modify",
-          "description": "Integrate collision detection functions into the game loop, set game over state when collision is detected, and stop the game loop on collision"
-        },
-        {
-          "path": "frontend/src/components/GameOverScreen.tsx",
+          "path": "frontend/src/hooks/usePhotoUpload.ts",
           "operation": "create",
-          "description": "Create a game over overlay component that displays when the game ends, showing the final score and game over message with clear typography"
+          "description": "Create a custom hook that handles photo file management, converts photos to data URLs or blobs, stores them as static assets in the frontend, and calls the backend submitPhoto method with the photo URL. Manage upload state (uploading, success, error)."
         }
       ]
     },
     {
-      "id": "REQ-4",
-      "summary": "Display current score that increments with food consumption",
+      "id": "REQ-10",
+      "summary": "Enforce photo upload requirement when user wakes up late, preventing them from dismissing or continuing until photo is submitted",
       "acceptanceCriteria": [
-        "Score counter is visible during gameplay",
-        "Score increases by 1 for each food item eaten",
-        "Final score is shown on game over screen"
+        "If current time exceeds wake-up time by any amount, photo upload becomes mandatory",
+        "User cannot proceed or dismiss the requirement without uploading photo",
+        "Clear messaging explains why photo is required",
+        "After photo submission, user can proceed normally"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/ScoreDisplay.tsx",
+          "path": "frontend/src/components/PhotoRequirementModal.tsx",
           "operation": "create",
-          "description": "Create a score display component that shows the current score with clear typography and positioning above or beside the game board"
-        },
-        {
-          "path": "frontend/src/components/SnakeGame.tsx",
-          "operation": "modify",
-          "description": "Add score state management, increment score when food collision is detected, and pass score to ScoreDisplay component"
-        },
-        {
-          "path": "frontend/src/components/GameOverScreen.tsx",
-          "operation": "modify",
-          "description": "Add final score display to the game over screen, receiving the score value as a prop and displaying it prominently"
+          "description": "Create a modal component that displays when the user is late and has not yet submitted a photo. The modal should be non-dismissible (no close button, no backdrop click to close) until the photo is uploaded. Include the PhotoCapture component within this modal. Display clear messaging explaining that a photo is required because the user woke up late. Show the number of minutes late. After successful photo submission, allow the modal to close automatically."
         }
       ]
     },
     {
-      "id": "REQ-5",
-      "summary": "Add restart functionality to reset the game after game over",
+      "id": "REQ-12",
+      "summary": "Display a history or log showing past wake-up times, whether user was on time or late, and minutes late for each occurrence",
       "acceptanceCriteria": [
-        "Restart button or key is available after game over",
-        "Restarting resets the snake to initial position and length",
-        "Score resets to 0 on restart"
+        "Users can view a chronological list of wake-up records",
+        "Each record shows the target time, actual wake time, and minutes late",
+        "On-time wake-ups are clearly distinguished from late wake-ups",
+        "Photo submission status is indicated for late wake-ups"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/GameOverScreen.tsx",
-          "operation": "modify",
-          "description": "Add a restart button to the game over screen that triggers the restart callback, styled consistently with the game theme"
+          "path": "frontend/src/components/WakeUpHistory.tsx",
+          "operation": "create",
+          "description": "Create a history component that displays a chronological list of wake-up records fetched from the backend. Show each record with target wake-up time, actual wake time, and minutes late (if applicable). Clearly distinguish on-time wake-ups from late ones using visual styling. Indicate photo submission status for late wake-ups. Use the authorization component to ensure only authenticated users can view their history. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/SnakeGame.tsx",
-          "operation": "modify",
-          "description": "Implement restart function that resets snake to initial position and length, resets score to 0, spawns new food, clears game over state, and restarts the game loop"
-        },
-        {
-          "path": "frontend/src/hooks/useKeyboardControls.ts",
-          "operation": "modify",
-          "description": "Add keyboard listener for restart key (e.g., spacebar or Enter) that triggers restart when game is in game over state"
+          "path": "frontend/src/hooks/usePhotoSubmissions.ts",
+          "operation": "create",
+          "description": "Create a custom hook that wraps the backend getPhotoSubmissions call using React Query. Fetch and cache the list of photo submissions. Provide loading and error states. Integrate with wake-up settings to correlate submissions with wake-up times."
         }
       ]
     },
     {
-      "id": "REQ-6",
-      "summary": "Create a visually engaging game interface with a distinct creative theme",
+      "id": "REQ-13",
+      "summary": "Integrate Internet Identity authentication to enable multi-user support where each user has their own wake-up settings and photo records",
       "acceptanceCriteria": [
-        "Game has a consistent visual theme with appropriate colors",
-        "Typography is clear and readable for score and game states",
-        "Layout effectively presents the game board and UI elements",
-        "Overall design creates an engaging gaming atmosphere"
+        "Users must authenticate with Internet Identity to use the app",
+        "Each user's wake-up settings and history are isolated",
+        "Login state persists across sessions",
+        "Unauthenticated users are prompted to log in"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Define custom color palette for the game theme using Tailwind CSS custom colors or CSS variables, add game-specific typography styles, and set background styling for the overall gaming atmosphere"
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend Tailwind configuration with custom colors for snake, food, game board background, and UI elements to create a cohesive visual theme"
-        },
-        {
-          "path": "frontend/src/components/SnakeGame.tsx",
-          "operation": "modify",
-          "description": "Apply theme styling to the game canvas/board including background color, snake rendering with themed colors, food rendering with contrasting themed colors, and consistent padding and borders"
-        },
-        {
-          "path": "frontend/src/components/GameLayout.tsx",
+          "path": "frontend/src/components/LoginButton.tsx",
           "operation": "create",
-          "description": "Create a layout component that wraps the game with a consistent frame, centers the game board, and provides spacing for the score display and other UI elements"
+          "description": "Create a login/logout button component using the existing useInternetIdentity hook from frontend/src/hooks/useInternetIdentity.ts. Follow the authorization component usage pattern for login handling, including clearing the query cache on logout. Use the authorization component to manage authentication state. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetup.tsx",
+          "operation": "create",
+          "description": "Create a profile setup component that prompts new users to enter their name when they first log in. Use the authorization component's getCallerUserProfile and saveCallerUserProfile backend methods. Follow the authorization component's pattern to prevent modal flashing by checking if the actor is ready and profile is fetched before showing the setup form. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AuthGuard.tsx",
+          "operation": "create",
+          "description": "Create an authentication guard component that wraps the main app content and requires users to be logged in before showing wake-up features. Display a login prompt or the LoginButton component when users are not authenticated. Use the authorization component to check authentication state. Show a loading state while checking authentication. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useUserProfile.ts",
+          "operation": "create",
+          "description": "Create a custom hook that wraps the authorization component's getCallerUserProfile backend method using React Query. Follow the authorization component's pattern to prevent modal flashing by properly handling actor dependency and loading states. Return user profile data along with loading and error states."
         },
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Replace default App content with GameLayout component wrapping SnakeGame and ScoreDisplay, ensuring the game is properly centered and styled"
+          "description": "Replace the existing SnakeGame content with the new Wake Up Warrior application structure. Wrap the main content in the AuthGuard component to require authentication. Include the ProfileSetup component to handle first-time user setup. Integrate WakeUpSettings, WakeUpTimer, PhotoRequirementModal, and WakeUpHistory components into the main app layout. Add the LoginButton component to the app header or navigation area. Remove all Snake game-related components and logic."
+        },
+        {
+          "path": "frontend/src/components/WakeUpLayout.tsx",
+          "operation": "create",
+          "description": "Create a main layout component for the Wake Up Warrior app that includes a header with branding and the LoginButton, a main content area for wake-up features, and a footer. Incorporate the generated hero banner image frontend/public/assets/generated/wake-hero.dim_1200x400.png in the header or hero section for motivational morning theme. Use the existing Tailwind configuration and color theme from frontend/src/index.css and frontend/tailwind.config.js for consistent styling."
         }
       ]
     }

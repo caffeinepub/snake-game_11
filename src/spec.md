@@ -1,14 +1,16 @@
 # Specification
 
 ## Summary
-**Goal:** Create a playable 2D Snake game with core mechanics, collision detection, scoring, and restart functionality.
+**Goal:** Add wake-up accountability feature where users set a target wake-up time and must upload a photo of themselves dressed if they wake up late.
 
 **Planned changes:**
-- Implement a 2D Snake game where the snake moves continuously and grows when eating food
-- Add arrow key controls to change the snake's direction (preventing reverse movements)
-- Implement collision detection for walls and self-collision to trigger game over
-- Display a score counter that increments with each food eaten
-- Add restart functionality to reset the game after game over
-- Design a visually engaging interface with a cohesive creative theme using Tailwind CSS
+- Add wake-up time setting interface with hour and minute selection
+- Implement timer tracking current time against target wake-up time
+- Calculate and display minutes late when user oversleeps
+- Add photo capture/upload functionality for accountability
+- Enforce mandatory photo upload when user wakes up late
+- Store wake-up settings and photo submission records in backend
+- Display history log showing past wake-up records with on-time/late status
+- Integrate Internet Identity authentication for multi-user support
 
-**User-visible outcome:** Users can play a complete Snake game using arrow keys, watch their score increase as they collect food, see game over when colliding with walls or themselves, and restart to play again. The game features an engaging visual design with a consistent theme.
+**User-visible outcome:** Users can set their target wake-up time, and if they wake up late, they must take or upload a photo of themselves dressed before proceeding. Each user has their own isolated wake-up history showing their accountability record over time.

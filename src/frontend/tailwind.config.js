@@ -56,25 +56,19 @@ export default {
                     4: 'oklch(var(--chart-4))',
                     5: 'oklch(var(--chart-5))'
                 },
-                sidebar: {
-                    DEFAULT: 'oklch(var(--sidebar))',
-                    foreground: 'oklch(var(--sidebar-foreground))',
-                    primary: 'oklch(var(--sidebar-primary))',
-                    'primary-foreground': 'oklch(var(--sidebar-primary-foreground))',
-                    accent: 'oklch(var(--sidebar-accent))',
-                    'accent-foreground': 'oklch(var(--sidebar-accent-foreground))',
-                    border: 'oklch(var(--sidebar-border))',
-                    ring: 'oklch(var(--sidebar-ring))'
-                },
-                game: {
-                    'bg-start': 'oklch(var(--game-bg-start))',
-                    'bg-end': 'oklch(var(--game-bg-end))',
-                    primary: 'oklch(var(--game-primary) / <alpha-value>)',
-                    secondary: 'oklch(var(--game-secondary))',
-                    accent: 'oklch(var(--game-accent))',
-                    border: 'oklch(var(--game-border))',
-                    card: 'oklch(var(--game-card) / <alpha-value>)',
-                    'text-secondary': 'oklch(var(--game-text-secondary))'
+                wake: {
+                    dawn: 'oklch(var(--wake-dawn))',
+                    morning: 'oklch(var(--wake-morning))',
+                    sky: 'oklch(var(--wake-sky))',
+                    'hero-start': 'oklch(var(--wake-hero-start))',
+                    'hero-end': 'oklch(var(--wake-hero-end))',
+                    accent: 'oklch(var(--wake-accent))',
+                    'accent-foreground': 'oklch(var(--wake-accent-foreground))',
+                    success: 'oklch(var(--wake-success))',
+                    border: 'oklch(var(--wake-border))',
+                    card: 'oklch(var(--wake-card))',
+                    foreground: 'oklch(var(--wake-foreground))',
+                    muted: 'oklch(var(--wake-muted))'
                 }
             },
             borderRadius: {

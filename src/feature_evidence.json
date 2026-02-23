@@ -2,123 +2,129 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-playable-snake-game-with-a-snake-that-moves-continuously-in-the-current-direction-and-grows-longer-when-eating-food",
-      "featureTitle": "Create a playable Snake game with a snake that moves continuously in the current direction and grows longer when eating food",
+      "featureId": "feature-create-a-wake-up-time-setting-interface-where-users-can-set-their-target-wake-up-time",
+      "featureTitle": "Create a wake-up time setting interface where users can set their target wake-up time",
       "files": [
-        "frontend/src/components/SnakeGame.tsx",
-        "frontend/src/hooks/useGameLoop.ts",
-        "frontend/src/types/game.ts"
+        "frontend/src/components/WakeUpSettings.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "camera@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-7"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-arrow-key-controls-to-change-the-snake-s-direction",
-      "featureTitle": "Implement arrow key controls to change the snake's direction",
+      "featureId": "feature-implement-a-timer-that-tracks-the-current-time-against-the-set-wake-up-time-and-calculates-how-many-minutes-late-the-user-is",
+      "featureTitle": "Implement a timer that tracks the current time against the set wake-up time and calculates how many minutes late the user is",
       "files": [
-        "frontend/src/components/SnakeGame.tsx",
-        "frontend/src/hooks/useKeyboardControls.ts"
+        "frontend/src/components/WakeUpTimer.tsx",
+        "frontend/src/hooks/useWakeUpTimer.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "camera@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-8"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-collision-detection-for-game-over-conditions-when-snake-hits-walls-or-itself",
-      "featureTitle": "Implement collision detection for game over conditions when snake hits walls or itself",
+      "featureId": "feature-add-photo-capture-functionality-that-allows-users-to-take-or-upload-a-photo-of-themselves-wearing-clothes",
+      "featureTitle": "Add photo capture functionality that allows users to take or upload a photo of themselves wearing clothes",
       "files": [
-        "frontend/src/components/GameOverScreen.tsx",
-        "frontend/src/components/SnakeGame.tsx",
-        "frontend/src/utils/collisionDetection.ts"
+        "frontend/src/components/PhotoCapture.tsx",
+        "frontend/src/hooks/usePhotoUpload.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "camera@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-9"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-display-current-score-that-increments-each-time-the-snake-eats-food",
-      "featureTitle": "Display current score that increments each time the snake eats food",
+      "featureId": "feature-enforce-photo-upload-requirement-when-user-wakes-up-late-preventing-them-from-dismissing-or-continuing-until-photo-is-submitted",
+      "featureTitle": "Enforce photo upload requirement when user wakes up late, preventing them from dismissing or continuing until photo is submitted",
       "files": [
-        "frontend/src/components/GameOverScreen.tsx",
-        "frontend/src/components/ScoreDisplay.tsx",
-        "frontend/src/components/SnakeGame.tsx"
+        "frontend/src/components/PhotoRequirementModal.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "camera@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-10"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-restart-functionality-to-start-a-new-game-after-game-over",
-      "featureTitle": "Add restart functionality to start a new game after game over",
+      "featureId": "feature-display-a-history-or-log-showing-past-wake-up-times-whether-user-was-on-time-or-late-and-minutes-late-for-each-occurrence",
+      "featureTitle": "Display a history or log showing past wake-up times, whether user was on time or late, and minutes late for each occurrence",
       "files": [
-        "frontend/src/components/GameOverScreen.tsx",
-        "frontend/src/components/SnakeGame.tsx",
-        "frontend/src/hooks/useKeyboardControls.ts"
+        "frontend/src/components/WakeUpHistory.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "camera@1.0.0"
       ],
       "testIds": [
-        "REQ-5"
+        "REQ-12"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-a-visually-engaging-game-interface-with-a-distinct-creative-theme-including-colors-typography-and-layout-that-creates-a-cohesive-gaming-experience",
-      "featureTitle": "Create a visually engaging game interface with a distinct creative theme including colors, typography, and layout that creates a cohesive gaming experience",
+      "featureId": "feature-integrate-internet-identity-authentication-to-enable-multi-user-support-where-each-user-has-their-own-wake-up-settings-and-photo-records",
+      "featureTitle": "Integrate Internet Identity authentication to enable multi-user support where each user has their own wake-up settings and photo records",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/components/GameLayout.tsx",
-        "frontend/src/components/SnakeGame.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/components/AuthGuard.tsx",
+        "frontend/src/components/LoginButton.tsx",
+        "frontend/src/components/ProfileSetup.tsx",
+        "frontend/src/components/WakeUpLayout.tsx",
+        "frontend/src/hooks/useUserProfile.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "camera@1.0.0"
       ],
       "testIds": [
-        "REQ-6"
+        "REQ-13"
       ],
       "confidence": "high"
     }
